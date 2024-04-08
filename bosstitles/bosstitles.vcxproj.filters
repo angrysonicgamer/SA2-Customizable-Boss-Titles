@@ -56,7 +56,7 @@
     </ClInclude>
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="BossTitles.h">
+    <ClInclude Include="Mod\BossTitles.h">
       <Filter>Mod</Filter>
     </ClInclude>
   </ItemGroup>

@@ -19,7 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BossTitles.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Include\Mod Loader Common\IniFile.hpp" />
     <ClInclude Include="Include\Mod Loader Common\TextConv.hpp" />
@@ -34,6 +33,7 @@
     <ClInclude Include="Include\SA2 Mod Loader\SA2ModLoader.h" />
     <ClInclude Include="Include\SA2 Mod Loader\SA2Structs.h" />
     <ClInclude Include="Include\SA2 Mod Loader\SA2Variables.h" />
+    <ClInclude Include="Mod\BossTitles.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
