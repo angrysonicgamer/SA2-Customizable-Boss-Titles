@@ -161,7 +161,7 @@ std::vector<std::vector<BossTitleLetterData>*> CustomLetterData
 
 
 
-void ReadBossIniFile(const char* modPath)
+void ReadIniFile(const char* modPath)
 {
 	IniFile bossTitles(std::string(modPath) + "\\Boss Titles.ini");
 
@@ -276,7 +276,7 @@ void RenameCharacterBossTexlists()
 
 void InitBossTitles(const char* modPath)
 {
-	ReadBossIniFile(modPath);
+	ReadIniFile(modPath);
 	ProcessBossTitles();
 	SetCharacterSpacing();
 	SetUpBossTitles();
