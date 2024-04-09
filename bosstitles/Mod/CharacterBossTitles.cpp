@@ -163,7 +163,7 @@ std::vector<std::vector<BossTitleLetterData>*> CustomLetterData
 
 void ReadIniFile(const char* modPath)
 {
-	IniFile bossTitles(std::string(modPath) + "\\Boss Titles.ini");
+	IniFile bossTitles(std::string(modPath) + "\\BossTitles.ini");
 
 	SonicTitle = bossTitles.getString("vs Character", "SonicTitle", "Sonic");
 	TailsTitle = bossTitles.getString("vs Character", "TailsTitle", "Tails");
@@ -274,7 +274,7 @@ void RenameCharacterBossTexlists()
 }
 
 
-void InitBossTitles(const char* modPath)
+void InitCharacterBossTitles(const char* modPath)
 {
 	ReadIniFile(modPath);
 	ProcessBossTitles();

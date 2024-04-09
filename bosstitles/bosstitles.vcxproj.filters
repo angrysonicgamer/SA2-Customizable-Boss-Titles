@@ -59,6 +59,9 @@
     <ClInclude Include="Mod\BossTitles.h">
       <Filter>Mod</Filter>
     </ClInclude>
+    <ClInclude Include="Mod\Config.h">
+      <Filter>Mod</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Include\Mod Loader Common\IniFile.cpp">
@@ -67,7 +70,7 @@
     <ClCompile Include="Include\Mod Loader Common\TextConv.cpp">
       <Filter>Include\Mod Loader Common</Filter>
     </ClCompile>
-    <ClCompile Include="Mod\BossTitles.cpp">
+    <ClCompile Include="Mod\CharacterBossTitles.cpp">
       <Filter>Mod</Filter>
     </ClCompile>
     <ClCompile Include="Mod\Main.cpp">
@@ -75,5 +78,8 @@
     </ClCompile>
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="pch.cpp" />
+    <ClCompile Include="Mod\Config.cpp">
+      <Filter>Mod</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -17,4 +17,4 @@ struct FullBossTitleData
 	int Color;
 };
 
-void InitBossTitles(const char* modPath);
+void InitCharacterBossTitles(const char* modPath);
