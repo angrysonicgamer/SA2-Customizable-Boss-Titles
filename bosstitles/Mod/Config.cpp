@@ -32,7 +32,7 @@ void ReadConfig(const char* modPath)
 }
 
 
-void LoadDCStyleBossTitles(const HelperFunctions& helperFunctions)
+void LoadDCStyleBossTitleTextures(const HelperFunctions& helperFunctions)
 {
 	ReplaceBossTitlePAK("titletex_bossbogy");
 	ReplaceBossTitlePAK("titletex_bosslast1");
@@ -46,6 +46,6 @@ void InitConfig(const char* modPath, const HelperFunctions& helperFunctions)
 
 	if (BossTitlesStyle == "Dreamcast/Gamecube")
 	{
-		LoadDCStyleBossTitles(helperFunctions);
+		LoadDCStyleBossTitleTextures(helperFunctions);
 	}
 }
