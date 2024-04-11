@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "BossTitles.h"
-#include "Include/Mod Loader Common/IniFile.hpp"
+#include "Config.h"
 
 
 DataPointer(FullBossTitleData, VsSonic1, 0xFFE904);
@@ -21,15 +21,7 @@ DataPointer(FullBossTitleData, Biolizard, 0x1371BEC);
 DataPointer(FullBossTitleData, Finalhazard, 0x170639C);
 
 
-//Externs from config
-
-std::string SonicTitle;
-std::string TailsTitle;
-std::string KnucklesTitle;
-std::string ShadowTitle;
-std::string EggmanTitle;
-std::string RougeTitle;
-
+std::vector<std::string*> BossTitles = GetBossTitles();
 
 std::vector<BossTitleLetterData> SonicLetters;
 std::vector<BossTitleLetterData> TailsLetters;
@@ -98,38 +90,38 @@ std::vector<std::vector<BossTitleLetterData>*> CustomLetterData
 struct BossTitle
 {
 	std::string DefaultText;
-	std::string& CustomText;
+	std::string* CustomText;
 	std::vector<BossTitleLetterData>& CustomLetterData;
 	FullBossTitleData& VanillaBossTitleData;
 };
 
-std::vector<BossTitle> BossTitles
+std::vector<BossTitle> BossTitlesData
 {
-	{ "Sonic", SonicTitle, SonicLetters, VsSonic1 },
-	{ "Sonic", SonicTitle, SonicLetters, VsSonic2 },
-	{ "Shadow", ShadowTitle, ShadowLetters, VsShadow1 },
-	{ "Shadow", ShadowTitle, ShadowLetters, VsShadow2 },
-	{ "Tails", TailsTitle, TailsLetters, VsTails1 },
-	{ "Tails", TailsTitle, TailsLetters, VsTails2 },
-	{ "Dr.Eggman", EggmanTitle, EggmanLetters, VsEggman1 },
-	{ "Dr.Eggman", EggmanTitle, EggmanLetters, VsEggman2 },
-	{ "Knuckles", KnucklesTitle, KnucklesLetters, VsKnuckles },
-	{ "Rouge", RougeTitle, RougeLetters, VsRouge },
+	{ "Sonic", BossTitles[Characters_Sonic], SonicLetters, VsSonic1},
+	{ "Sonic", BossTitles[Characters_Sonic], SonicLetters, VsSonic2 },
+	{ "Shadow", BossTitles[Characters_Shadow], ShadowLetters, VsShadow1 },
+	{ "Shadow", BossTitles[Characters_Shadow], ShadowLetters, VsShadow2 },
+	{ "Tails", BossTitles[Characters_Tails], TailsLetters, VsTails1 },
+	{ "Tails", BossTitles[Characters_Tails], TailsLetters, VsTails2 },
+	{ "Dr.Eggman", BossTitles[Characters_Eggman], EggmanLetters, VsEggman1 },
+	{ "Dr.Eggman", BossTitles[Characters_Eggman], EggmanLetters, VsEggman2 },
+	{ "Knuckles", BossTitles[Characters_Knuckles], KnucklesLetters, VsKnuckles },
+	{ "Rouge", BossTitles[Characters_Rouge], RougeLetters, VsRouge },
 };
 
 
 void ProcessBossTitles()
 {
-	for (auto& title : BossTitles)
+	for (auto& title : BossTitlesData)
 	{
 		if (!title.CustomLetterData.empty()) continue;
 		
-		if (title.CustomText.empty())
+		if (title.CustomText->empty())
 		{
-			title.CustomText = title.DefaultText;
+			*title.CustomText = title.DefaultText;
 		}		
 
-		for (auto& letter : title.CustomText)
+		for (auto& letter : *title.CustomText)
 		{
 			if (BossLetters.count(std::toupper(letter)))
 			{
@@ -194,7 +186,7 @@ int CalculateDisplayTime(const BossTitle& title)
 
 void SetUpBossTitles()
 {
-	for (auto& title : BossTitles)
+	for (auto& title : BossTitlesData)
 	{
 		title.VanillaBossTitleData = { title.CustomLetterData.data(), (short)title.CustomLetterData.size(), 0, 20, nullptr, 0, 3, CalculateDisplayTime(title), title.VanillaBossTitleData.TexList, 320, 240, 2, 0xFFFFFF};
 	}

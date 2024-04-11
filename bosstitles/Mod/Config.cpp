@@ -4,23 +4,29 @@
 
 #define ReplaceBossTitlePAK(file) helperFunctions.ReplaceFile("resource\\gd_PC\\" file ".prs", "resource\\gd_PC\\PRS\\dcstyle\\" file ".pak");
 
-extern std::string SonicTitle;
-extern std::string TailsTitle;
-extern std::string KnucklesTitle;
-extern std::string ShadowTitle;
-extern std::string EggmanTitle;
-extern std::string RougeTitle;
+std::string SonicTitle;
+std::string ShadowTitle;
+std::string TailsTitle;
+std::string EggmanTitle;
+std::string KnucklesTitle;
+std::string RougeTitle;
 std::string BossTitlesStyle;
+
+std::vector<std::string*> GetBossTitles()
+{
+	return { &SonicTitle, &ShadowTitle, &TailsTitle, &EggmanTitle, &KnucklesTitle, &RougeTitle };
+};
+
 
 void ReadConfig(const char* modPath)
 {
 	IniFile config(std::string(modPath) + "\\config.ini");
 
 	SonicTitle = config.getString("Customization", "SonicTitle", "Sonic");
-	TailsTitle = config.getString("Customization", "TailsTitle", "Tails");
-	KnucklesTitle = config.getString("Customization", "KnucklesTitle", "Knuckles");
 	ShadowTitle = config.getString("Customization", "ShadowTitle", "Shadow");
+	TailsTitle = config.getString("Customization", "TailsTitle", "Tails");
 	EggmanTitle = config.getString("Customization", "EggmanTitle", "Dr.Eggman");
+	KnucklesTitle = config.getString("Customization", "KnucklesTitle", "Knuckles");	
 	RougeTitle = config.getString("Customization", "RougeTitle", "Rouge");
 	BossTitlesStyle = config.getString("Style", "BossTitlesStyle", "PC");
 }
