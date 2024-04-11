@@ -3,14 +3,6 @@
 #include "Include/Mod Loader Common/IniFile.hpp"
 
 
-struct BossTitle
-{
-	std::string DefaultText;
-	std::string& CustomText;
-	std::vector<BossTitleLetterData>& CustomLetterData;
-	FullBossTitleData& VanillaBossTitleData;
-};
-
 DataPointer(FullBossTitleData, VsSonic1, 0xFFE904);
 DataPointer(FullBossTitleData, VsSonic2, 0x1646524);
 DataPointer(FullBossTitleData, VsShadow1, 0xFFFCCC);
@@ -28,6 +20,9 @@ DataPointer(FullBossTitleData, EggGolemDark, 0x16CC4EC);
 DataPointer(FullBossTitleData, Biolizard, 0x1371BEC);
 DataPointer(FullBossTitleData, Finalhazard, 0x170639C);
 
+
+//Externs from config
+
 std::string SonicTitle;
 std::string TailsTitle;
 std::string KnucklesTitle;
@@ -35,58 +30,13 @@ std::string ShadowTitle;
 std::string EggmanTitle;
 std::string RougeTitle;
 
+
 std::vector<BossTitleLetterData> SonicLetters;
 std::vector<BossTitleLetterData> TailsLetters;
 std::vector<BossTitleLetterData> KnucklesLetters;
 std::vector<BossTitleLetterData> ShadowLetters;
 std::vector<BossTitleLetterData> EggmanLetters;
 std::vector<BossTitleLetterData> RougeLetters;
-
-
-enum BossTitleLetterIDs
-{
-	_A = 1000000,
-	_B,
-	_C,
-	_D,
-	_E,
-	_F,
-	_G,
-	_H,
-	_I,
-	_J,
-	_K,
-	_L,
-	_M,
-	_N,
-	_O,
-	_P,
-	_Q,
-	_R,
-	_S,
-	_T,
-	_U,
-	_V,
-	_W,
-	_X,
-	_Y,
-	_Z,
-	_0,
-	_1,
-	_2,
-	_3,
-	_4,
-	_5,
-	_6,
-	_7,
-	_8,
-	_9,
-	dot,
-	apostrophe,
-	exclamation,
-	question,
-	space = 0
-};
 
 
 std::map<char, BossTitleLetterData> BossLetters
@@ -134,6 +84,24 @@ std::map<char, BossTitleLetterData> BossLetters
 	{ ' ', { space, 12, 16, 0, 32, 16, 0 } },
 };
 
+std::vector<std::vector<BossTitleLetterData>*> CustomLetterData
+{
+	&SonicLetters,
+	&ShadowLetters,
+	&TailsLetters,
+	&EggmanLetters,
+	&KnucklesLetters,
+	&RougeLetters,
+};
+
+
+struct BossTitle
+{
+	std::string DefaultText;
+	std::string& CustomText;
+	std::vector<BossTitleLetterData>& CustomLetterData;
+	FullBossTitleData& VanillaBossTitleData;
+};
 
 std::vector<BossTitle> BossTitles
 {
@@ -148,30 +116,6 @@ std::vector<BossTitle> BossTitles
 	{ "Knuckles", KnucklesTitle, KnucklesLetters, VsKnuckles },
 	{ "Rouge", RougeTitle, RougeLetters, VsRouge },
 };
-
-std::vector<std::vector<BossTitleLetterData>*> CustomLetterData
-{
-	&SonicLetters,
-	&ShadowLetters,
-	&TailsLetters,
-	&EggmanLetters,
-	&KnucklesLetters,
-	&RougeLetters,
-};
-
-
-
-void ReadIniFile(const char* modPath)
-{
-	IniFile bossTitles(std::string(modPath) + "\\BossTitles.ini");
-
-	SonicTitle = bossTitles.getString("vs Character", "SonicTitle", "Sonic");
-	TailsTitle = bossTitles.getString("vs Character", "TailsTitle", "Tails");
-	KnucklesTitle = bossTitles.getString("vs Character", "KnucklesTitle", "Knuckles");
-	ShadowTitle = bossTitles.getString("vs Character", "ShadowTitle", "Shadow");
-	EggmanTitle = bossTitles.getString("vs Character", "EggmanTitle", "Dr.Eggman");
-	RougeTitle = bossTitles.getString("vs Character", "RougeTitle", "Rouge");
-}
 
 
 void ProcessBossTitles()
@@ -276,7 +220,6 @@ void RenameCharacterBossTexlists()
 
 void InitCharacterBossTitles(const char* modPath)
 {
-	ReadIniFile(modPath);
 	ProcessBossTitles();
 	SetCharacterSpacing();
 	SetUpBossTitles();
