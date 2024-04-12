@@ -4,18 +4,13 @@
 
 #define ReplaceBossTitlePAK(file) helperFunctions.ReplaceFile("resource\\gd_PC\\" file ".prs", "resource\\gd_PC\\PRS\\dcstyle\\" file ".pak");
 
-std::string SonicTitle;
-std::string ShadowTitle;
-std::string TailsTitle;
-std::string EggmanTitle;
-std::string KnucklesTitle;
-std::string RougeTitle;
+extern std::string SonicTitle;
+extern std::string ShadowTitle;
+extern std::string TailsTitle;
+extern std::string EggmanTitle;
+extern std::string KnucklesTitle;
+extern std::string RougeTitle;
 std::string BossTitlesStyle;
-
-std::vector<std::string*> GetBossTitles()
-{
-	return { &SonicTitle, &ShadowTitle, &TailsTitle, &EggmanTitle, &KnucklesTitle, &RougeTitle };
-};
 
 
 void ReadConfig(const char* modPath)

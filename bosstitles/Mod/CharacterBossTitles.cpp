@@ -3,32 +3,53 @@
 #include "Config.h"
 
 
-DataPointer(FullBossTitleData, VsSonic1, 0xFFE904);
-DataPointer(FullBossTitleData, VsSonic2, 0x1646524);
-DataPointer(FullBossTitleData, VsShadow1, 0xFFFCCC);
-DataPointer(FullBossTitleData, VsShadow2, 0x1647C24);
-DataPointer(FullBossTitleData, VsTails1, 0xEF3084);
-DataPointer(FullBossTitleData, VsTails2, 0xC86F08);
-DataPointer(FullBossTitleData, VsEggman1, 0xEF3190);
-DataPointer(FullBossTitleData, VsEggman2, 0xC86F34);
-DataPointer(FullBossTitleData, VsKnuckles, 0xDCF434);
-DataPointer(FullBossTitleData, VsRouge, 0xDCF530);
+//Externs from config
 
-DataPointer(FullBossTitleData, KingBoomBoo, 0x100C808);
-DataPointer(FullBossTitleData, EggGolemHero, 0x16670D0);
-DataPointer(FullBossTitleData, EggGolemDark, 0x16CC4EC);
-DataPointer(FullBossTitleData, Biolizard, 0x1371BEC);
-DataPointer(FullBossTitleData, Finalhazard, 0x170639C);
+std::string SonicTitle;
+std::string ShadowTitle;
+std::string TailsTitle;
+std::string EggmanTitle;
+std::string KnucklesTitle;
+std::string RougeTitle;
 
+//For CharSel
 
-std::vector<std::string*> BossTitles = GetBossTitles();
+std::string AmyTitle = "Amy";
+std::string MetalSonicTitle = "Metal Sonic";
+std::string TikalTitle = "Tikal";
+std::string ChaosTitle = "Chaos";
+std::string ChaoWalkerTitle = "Chao";
+std::string DarkChaoTitle = "Dark Chao";
+
 
 std::vector<BossTitleLetterData> SonicLetters;
-std::vector<BossTitleLetterData> TailsLetters;
-std::vector<BossTitleLetterData> KnucklesLetters;
 std::vector<BossTitleLetterData> ShadowLetters;
+std::vector<BossTitleLetterData> TailsLetters;
 std::vector<BossTitleLetterData> EggmanLetters;
+std::vector<BossTitleLetterData> KnucklesLetters;
 std::vector<BossTitleLetterData> RougeLetters;
+
+std::vector<BossTitleLetterData> AmyLetters;
+std::vector<BossTitleLetterData> MetalSonicLetters;
+std::vector<BossTitleLetterData> TikalLetters;
+std::vector<BossTitleLetterData> ChaosLetters;
+std::vector<BossTitleLetterData> ChaoWalkerLetters;
+std::vector<BossTitleLetterData> DarkChaoLetters;
+
+
+FullBossTitleData VsSonic;
+FullBossTitleData VsShadow;
+FullBossTitleData VsTails;
+FullBossTitleData VsEggman;
+FullBossTitleData VsKnuckles;
+FullBossTitleData VsRouge;
+
+FullBossTitleData VsAmy;
+FullBossTitleData VsMetalSonic;
+FullBossTitleData VsTikal;
+FullBossTitleData VsChaos;
+FullBossTitleData VsChaoWalker;
+FullBossTitleData VsDarkChao;
 
 
 std::map<char, BossTitleLetterData> BossLetters
@@ -76,37 +97,34 @@ std::map<char, BossTitleLetterData> BossLetters
 	{ ' ', { space, 12, 16, 0, 32, 16, 0 } },
 };
 
-std::vector<std::vector<BossTitleLetterData>*> CustomLetterData
-{
-	&SonicLetters,
-	&ShadowLetters,
-	&TailsLetters,
-	&EggmanLetters,
-	&KnucklesLetters,
-	&RougeLetters,
-};
+
+NJS_TEXNAME VsCharacterTexName[41]; //total number of letters in BossLetters
+NJS_TEXLIST VsCharacterTexlist{ arrayptrandlengthT(VsCharacterTexName, int) };
 
 
 struct BossTitle
 {
 	std::string DefaultText;
 	std::string* CustomText;
-	std::vector<BossTitleLetterData>& CustomLetterData;
-	FullBossTitleData& VanillaBossTitleData;
+	std::vector<BossTitleLetterData>& LetterData;
+	FullBossTitleData& BossTitleData;
 };
 
 std::vector<BossTitle> BossTitlesData
 {
-	{ "Sonic", BossTitles[Characters_Sonic], SonicLetters, VsSonic1},
-	{ "Sonic", BossTitles[Characters_Sonic], SonicLetters, VsSonic2 },
-	{ "Shadow", BossTitles[Characters_Shadow], ShadowLetters, VsShadow1 },
-	{ "Shadow", BossTitles[Characters_Shadow], ShadowLetters, VsShadow2 },
-	{ "Tails", BossTitles[Characters_Tails], TailsLetters, VsTails1 },
-	{ "Tails", BossTitles[Characters_Tails], TailsLetters, VsTails2 },
-	{ "Dr.Eggman", BossTitles[Characters_Eggman], EggmanLetters, VsEggman1 },
-	{ "Dr.Eggman", BossTitles[Characters_Eggman], EggmanLetters, VsEggman2 },
-	{ "Knuckles", BossTitles[Characters_Knuckles], KnucklesLetters, VsKnuckles },
-	{ "Rouge", BossTitles[Characters_Rouge], RougeLetters, VsRouge },
+	{ "Sonic", &SonicTitle, SonicLetters, VsSonic },
+	{ "Shadow", &ShadowTitle, ShadowLetters, VsShadow },
+	{ "Tails", &TailsTitle, TailsLetters, VsTails },
+	{ "Dr.Eggman", &EggmanTitle, EggmanLetters, VsEggman },
+	{ "Knuckles", &KnucklesTitle, KnucklesLetters, VsKnuckles },
+	{ "Rouge", &RougeTitle, RougeLetters, VsRouge },
+
+	{ AmyTitle, &AmyTitle, AmyLetters, VsAmy },
+	{ MetalSonicTitle, &MetalSonicTitle, MetalSonicLetters, VsMetalSonic },
+	{ TikalTitle, &TikalTitle, TikalLetters, VsTikal },
+	{ ChaosTitle, &ChaosTitle, ChaosLetters, VsChaos },
+	{ ChaoWalkerTitle, &ChaoWalkerTitle, ChaoWalkerLetters, VsChaoWalker },
+	{ DarkChaoTitle, &DarkChaoTitle, DarkChaoLetters, VsDarkChao },
 };
 
 
@@ -114,18 +132,16 @@ void ProcessBossTitles()
 {
 	for (auto& title : BossTitlesData)
 	{
-		if (!title.CustomLetterData.empty()) continue;
-		
 		if (title.CustomText->empty())
 		{
 			*title.CustomText = title.DefaultText;
-		}		
+		}
 
 		for (auto& letter : *title.CustomText)
 		{
 			if (BossLetters.count(std::toupper(letter)))
 			{
-				title.CustomLetterData.push_back(BossLetters[std::toupper(letter)]);
+				title.LetterData.push_back(BossLetters[std::toupper(letter)]);
 			}			
 		}
 	}
@@ -158,13 +174,13 @@ int CalculateSpacing(const std::vector<BossTitleLetterData>& letterData)
 
 void SetCharacterSpacing()
 {
-	for (auto& data : CustomLetterData)
+	for (auto& title : BossTitlesData)
 	{
-		int spacing = CalculateSpacing(*data);
+		int spacing = CalculateSpacing(title.LetterData);
 
-		for (int i = 0; i < data->size() - 1; i++) //add spacing to all letters expect for the last one, so the title will be properly centered
+		for (int i = 0; i < title.LetterData.size() - 1; i++) //add spacing to all letters expect for the last one, so the title will be properly centered
 		{
-			data->at(i).Width += spacing;
+			title.LetterData[i].Width += spacing;
 		}
 	}
 }
@@ -172,48 +188,259 @@ void SetCharacterSpacing()
 
 int CalculateDisplayTime(const BossTitle& title)
 {
-	int vanillaDisplayTime = title.VanillaBossTitleData.DisplayTime;
+	int defaultDisplayTime = 360;
 	int delay = 20;
 	int displayTime = 120;
 
-	for (auto& letter : title.CustomLetterData)
+	for (auto& letter : title.LetterData)
 	{
 		displayTime += delay;
 	}
 
-	return displayTime < vanillaDisplayTime ? vanillaDisplayTime : displayTime;
+	return displayTime < defaultDisplayTime ? defaultDisplayTime : displayTime;
 }
 
 void SetUpBossTitles()
 {
 	for (auto& title : BossTitlesData)
 	{
-		title.VanillaBossTitleData = { title.CustomLetterData.data(), (short)title.CustomLetterData.size(), 0, 20, nullptr, 0, 3, CalculateDisplayTime(title), title.VanillaBossTitleData.TexList, 320, 240, 2, 0xFFFFFF};
+		title.BossTitleData = { title.LetterData.data(), (short)title.LetterData.size(), 0, 20, nullptr, 0, 3, CalculateDisplayTime(title), &VsCharacterTexlist, 320, 240, 2, 0xFFFFFF};
 	}
 }
 
 
-void RenameCharacterBossTexlists()
-{
-	const char* vscharacter = "titletex_vscharacter";
 
-	WriteData((const char**)0x61A352, vscharacter); //Sonic 1
-	WriteData((const char**)0x4C906B, vscharacter); //Sonic 2
-	WriteData((const char**)0x61A373, vscharacter); //Shadow 1
-	WriteData((const char**)0x4C908C, vscharacter); //Shadow 2
-	WriteData((const char**)0x627CD1, vscharacter); //Tails 1
-	WriteData((const char**)0x6639A8, vscharacter); //Tails 2
-	WriteData((const char**)0x627CF2, vscharacter); //Eggman 1
-	WriteData((const char**)0x6639C9, vscharacter); //Eggman 2
-	WriteData((const char**)0x64B76F, vscharacter); //Knuckles
-	WriteData((const char**)0x64B790, vscharacter); //Rouge
+//Character Select (Plus) code for compatibility
+
+void LoadBossTitle(char id)
+{
+	FullBossTitleData* title = nullptr;
+	switch (id)
+	{
+	case Characters_Sonic:
+		title = &VsSonic;
+		break;
+	case Characters_Shadow:
+		title = &VsShadow;
+		break;
+	case Characters_Tails:
+	case Characters_MechTails:
+		title = &VsTails;
+		break;
+	case Characters_Eggman:
+	case Characters_MechEggman:
+		title = &VsEggman;
+		break;
+	case Characters_Knuckles:
+		title = &VsKnuckles;
+		break;
+	case Characters_Rouge:
+		title = &VsRouge;
+		break;
+	case Characters_Amy:
+		title = &VsAmy;
+		break;
+	case Characters_MetalSonic:
+		title = &VsMetalSonic;
+		break;
+	case Characters_Tikal:
+		title = &VsTikal;
+		break;
+	case Characters_Chaos:
+		title = &VsChaos;
+		break;
+	case Characters_ChaoWalker:
+		title = &VsChaoWalker;
+		break;
+	case Characters_DarkChaoWalker:
+		title = &VsDarkChao;
+		break;
+	}
+
+	if (title)
+	{
+		if (CurrentLevel == LevelIDs_TailsVsEggman2)
+		{
+			if (title->DisplayTime < 480)
+			{
+				title->DisplayTime = 480;
+			}
+		}
+
+		LoadBossTitleExec(nullptr, (BossTitleData*)title);
+	}
 }
 
 
-void InitCharacterBossTitles(const char* modPath)
+const void* const loc_4C8142 = (void*)0x4C8142;
+__declspec(naked) void LoadShadow2BossTitle()
+{
+	__asm
+	{
+		movzx eax, al
+		push eax
+		call LoadBossTitle
+		pop eax
+		jmp loc_4C8142
+	}
+}
+
+const void* const loc_619D4C = (void*)0x619D4C;
+__declspec(naked) void LoadShadow1BossTitle()
+{
+	__asm
+	{
+		movzx eax, al
+		push eax
+		call LoadBossTitle
+		pop eax
+		jmp loc_619D4C
+	}
+}
+
+const void* const loc_6273E7 = (void*)0x6273E7;
+__declspec(naked) void LoadEggman1BossTitle()
+{
+	__asm
+	{
+		movzx eax, al
+		push eax
+		call LoadBossTitle
+		pop eax
+		jmp loc_6273E7
+	}
+}
+
+const void* const loc_649C91 = (void*)0x649C91;
+__declspec(naked) void LoadRougeBossTitle()
+{
+	__asm
+	{
+		movzx eax, al
+		push eax
+		call LoadBossTitle
+		pop eax
+		jmp loc_649C91
+	}
+}
+
+const void* const loc_662A7B = (void*)0x662A7B;
+__declspec(naked) void LoadEggman2BossTitle()
+{
+	__asm
+	{
+		movzx eax, al
+		push eax
+		call LoadBossTitle
+		pop eax
+		jmp loc_662A7B
+	}
+}
+
+
+void FreeTitleTex(ObjectMaster* obj)
+{
+	FreeTexList(&VsCharacterTexlist);
+}
+
+void LoadBossTitleTex(ObjectMaster* obj, char id)
+{
+	const char* vscharacter = "titletex_vscharacter";
+	LoadTextureList(vscharacter, &VsCharacterTexlist);
+	obj->DeleteSub = FreeTitleTex;
+}
+
+
+const void* const loc_4C909C = (void*)0x4C909C;
+__declspec(naked) void LoadShadow2BossTitleTex()
+{
+	__asm
+	{
+		movzx eax, al
+		push eax
+		push edi
+		call LoadBossTitleTex
+		pop edi
+		pop eax
+		jmp loc_4C909C
+	}
+}
+
+const void* const loc_61A383 = (void*)0x61A383;
+__declspec(naked) void LoadShadow1BossTitleTex()
+{
+	__asm
+	{
+		movzx eax, al
+		push eax
+		push edi
+		call LoadBossTitleTex
+		pop edi
+		pop eax
+		jmp loc_61A383
+	}
+}
+
+const void* const loc_627D02 = (void*)0x627D02;
+__declspec(naked) void LoadEggman1BossTitleTex()
+{
+	__asm
+	{
+		movzx eax, al
+		push eax
+		push edi
+		call LoadBossTitleTex
+		pop edi
+		pop eax
+		jmp loc_627D02
+	}
+}
+
+const void* const loc_64B7A0 = (void*)0x64B7A0;
+__declspec(naked) void LoadRougeBossTitleTex()
+{
+	__asm
+	{
+		movzx eax, al
+		push eax
+		push edi
+		call LoadBossTitleTex
+		pop edi
+		pop eax
+		jmp loc_64B7A0
+	}
+}
+
+const void* const loc_6639D9 = (void*)0x6639D9;
+__declspec(naked) void LoadEggman2BossTitleTex()
+{
+	__asm
+	{
+		movzx eax, al
+		push eax
+		push edi
+		call LoadBossTitleTex
+		pop edi
+		pop eax
+		jmp loc_6639D9
+	}
+}
+
+
+void InitCharacterBossTitles()
 {
 	ProcessBossTitles();
 	SetCharacterSpacing();
 	SetUpBossTitles();
-	RenameCharacterBossTexlists();
+
+	WriteJump((void*)0x4C8124, LoadShadow2BossTitle);
+	WriteJump((void*)0x4C9061, LoadShadow2BossTitleTex);
+	WriteJump((void*)0x619D2E, LoadShadow1BossTitle);
+	WriteJump((void*)0x61A348, LoadShadow1BossTitleTex);
+	WriteJump((void*)0x6273C9, LoadEggman1BossTitle);
+	WriteJump((void*)0x627CC7, LoadEggman1BossTitleTex);
+	WriteJump((void*)0x649C73, LoadRougeBossTitle);
+	WriteJump((void*)0x64B765, LoadRougeBossTitleTex);
+	WriteJump((void*)0x662A5D, LoadEggman2BossTitle);
+	WriteJump((void*)0x66399E, LoadEggman2BossTitleTex);
 }

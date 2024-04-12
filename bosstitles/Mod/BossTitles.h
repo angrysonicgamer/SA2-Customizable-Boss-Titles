@@ -62,4 +62,10 @@ enum BossTitleLetterIDs
 	space = 0
 };
 
-void InitCharacterBossTitles(const char* modPath);
+DataPointer(FullBossTitleData, KingBoomBoo, 0x100C808);
+DataPointer(FullBossTitleData, EggGolemHero, 0x16670D0);
+DataPointer(FullBossTitleData, EggGolemDark, 0x16CC4EC);
+DataPointer(FullBossTitleData, Biolizard, 0x1371BEC);
+DataPointer(FullBossTitleData, Finalhazard, 0x170639C);
+
+void InitCharacterBossTitles();
