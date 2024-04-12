@@ -69,3 +69,4 @@ DataPointer(FullBossTitleData, Biolizard, 0x1371BEC);
 DataPointer(FullBossTitleData, Finalhazard, 0x170639C);
 
 void InitCharacterBossTitles();
+void SetUpGunRoboFont();

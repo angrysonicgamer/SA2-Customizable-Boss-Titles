@@ -81,5 +81,8 @@
     <ClCompile Include="Mod\Config.cpp">
       <Filter>Mod</Filter>
     </ClCompile>
+    <ClCompile Include="Mod\GunRoboTitles.cpp">
+      <Filter>Mod</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

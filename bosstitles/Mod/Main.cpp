@@ -9,6 +9,7 @@ extern "C"
 	{
 		InitConfig(modPath, helperFunctions);
 		InitCharacterBossTitles();
+		SetUpGunRoboFont();
 	}
 
 	__declspec(dllexport) ModInfo SA2ModInfo = { ModLoaderVer };
