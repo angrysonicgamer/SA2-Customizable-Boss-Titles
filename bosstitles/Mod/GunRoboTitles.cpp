@@ -6,43 +6,67 @@
 
 struct GunRoboLetterData
 {
-	int Index;
+	int ID;
 	float Width;
 };
 
 DataArray(GunRoboLetterData, GunRoboLetterWidths, 0x11188A8, 20);
 
 
-std::vector<GunRoboLetterData> EnglishValues
+enum GunRoboBossTitleLetterIDs
 {
-	{ 0, 16 }, //-1
-	{ 1, 22 }, //-3
-	{ 2, 22 }, //-6
-	{ 3, 15 }, //B
-	{ 4, 16 }, //D
-	{ 5, 13 }, //F
-	{ 6, 17 }, //G
-	{ 7, 15 }, //H
-	{ 8, 5 }, //I
-	{ 9, 12 }, //L
-	{ 10, 15 }, //N
-	{ 11, 18 }, //O
-	{ 12, 16 }, //R
-	{ 13, 15 }, //S
-	{ 14, 15 }, //T
-	{ 15, 18 }, //Y
-	{ 16, 8 }, //t
-	{ 17, 13 }, //x
-	{ 18, 26 }, //A
-	{ 19, 7 } //space
+	gun_1,
+	gun_3,
+	gun_6,
+	gun_B,
+	gun_D,
+	gun_F,
+	gun_G,
+	gun_H,
+	gun_I,
+	gun_L,
+	gun_N,
+	gun_O,
+	gun_R,
+	gun_S,
+	gun_T,
+	gun_Y,
+	gun_t,
+	gun_x,
+	gun_A,
+	gun_space,
+};
+
+GunRoboLetterData NewLetterWidths[]
+{
+	{ gun_1, 16 },
+	{ gun_3, 22 },
+	{ gun_6, 22 },
+	{ gun_B, 15 },
+	{ gun_D, 16 },
+	{ gun_F, 13 },
+	{ gun_G, 17 },
+	{ gun_H, 15 },
+	{ gun_I, 5 },
+	{ gun_L, 12 },
+	{ gun_N, 15 },
+	{ gun_O, 18 },
+	{ gun_R, 16 },
+	{ gun_S, 15 },
+	{ gun_T, 15 },
+	{ gun_Y, 18 },
+	{ gun_t, 8 },
+	{ gun_x, 13 },
+	{ gun_A, 26 },
+	{ gun_space, 7 },
 };
 
 
 void SetUpGunRoboFont()
 {
-	int size = EnglishValues.size();
+	int size = std::size(NewLetterWidths);
 	for (int i = 0; i < size; i++)
 	{
-		GunRoboLetterWidths[i] = EnglishValues[i];
+		GunRoboLetterWidths[i] = NewLetterWidths[i];
 	}
 };
