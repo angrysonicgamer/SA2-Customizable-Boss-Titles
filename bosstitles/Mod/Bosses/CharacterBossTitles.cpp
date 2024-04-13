@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "BossTitles.h"
-#include "Config.h"
+#include "Mod/Config/Config.h"
 
 
 //Externs from config
@@ -204,7 +204,7 @@ void SetUpBossTitles()
 {
 	for (auto& title : BossTitlesData)
 	{
-		title.BossTitleData = { title.LetterData.data(), (short)title.LetterData.size(), 0, 20, nullptr, 0, 3, CalculateDisplayTime(title), &VsCharacterTexlist, 320, 240, 2, 0xFFFFFF};
+		title.BossTitleData = { title.LetterData.data(), (short)title.LetterData.size(), 0, 20, nullptr, 0, 3, CalculateDisplayTime(title), &VsCharacterTexlist, 320, 240, 2, WhiteColor };
 	}
 }
 

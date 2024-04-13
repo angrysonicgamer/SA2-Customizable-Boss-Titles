@@ -10,7 +10,14 @@ extern std::string TailsTitle;
 extern std::string EggmanTitle;
 extern std::string KnucklesTitle;
 extern std::string RougeTitle;
+
 std::string BossTitlesStyle;
+
+int GetBossTitlesStyle()
+{
+	if (BossTitlesStyle == "PC") return 0;
+	if (BossTitlesStyle == "DC/GC") return 1;
+}
 
 
 void ReadConfig(const char* modPath)
@@ -39,7 +46,7 @@ void InitConfig(const char* modPath, const HelperFunctions& helperFunctions)
 {
 	ReadConfig(modPath);
 
-	if (BossTitlesStyle == "Dreamcast/Gamecube")
+	if (BossTitlesStyle == "DC/GC")
 	{
 		LoadDCStyleBossTitleTextures(helperFunctions);
 	}

@@ -1,6 +1,6 @@
 #include "pch.h"
-#include "BossTitles.h"
-#include "Config.h"
+#include "Bosses/BossTitles.h"
+#include "Config/Config.h"
 
 
 extern "C"
@@ -10,6 +10,7 @@ extern "C"
 		InitConfig(modPath, helperFunctions);
 		InitCharacterBossTitles();
 		SetUpGunRoboFont();
+		InitOtherBossTitles();
 	}
 
 	__declspec(dllexport) ModInfo SA2ModInfo = { ModLoaderVer };

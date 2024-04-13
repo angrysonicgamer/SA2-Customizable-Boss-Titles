@@ -33,17 +33,18 @@
     <ClInclude Include="Include\SA2 Mod Loader\SA2ModLoader.h" />
     <ClInclude Include="Include\SA2 Mod Loader\SA2Structs.h" />
     <ClInclude Include="Include\SA2 Mod Loader\SA2Variables.h" />
-    <ClInclude Include="Mod\BossTitles.h" />
-    <ClInclude Include="Mod\Config.h" />
+    <ClInclude Include="Mod\Bosses\BossTitles.h" />
+    <ClInclude Include="Mod\Config\Config.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="Include\Mod Loader Common\IniFile.cpp" />
     <ClCompile Include="Include\Mod Loader Common\TextConv.cpp" />
-    <ClCompile Include="Mod\CharacterBossTitles.cpp" />
-    <ClCompile Include="Mod\Config.cpp" />
-    <ClCompile Include="Mod\GunRoboTitles.cpp" />
+    <ClCompile Include="Mod\Bosses\CharacterBossTitles.cpp" />
+    <ClCompile Include="Mod\Bosses\GunRoboTitles.cpp" />
+    <ClCompile Include="Mod\Bosses\OtherBossTitles.cpp" />
+    <ClCompile Include="Mod\Config\Config.cpp" />
     <ClCompile Include="Mod\Main.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

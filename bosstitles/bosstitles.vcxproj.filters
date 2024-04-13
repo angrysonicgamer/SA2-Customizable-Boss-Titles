@@ -13,6 +13,12 @@
     <Filter Include="Mod">
       <UniqueIdentifier>{d28bceff-4fc9-443f-a12a-cfd7aa435906}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Mod\Bosses">
+      <UniqueIdentifier>{afd30b36-273e-4a6a-bd9f-8f56cf3004f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mod\Config">
+      <UniqueIdentifier>{a7cd6aed-fa5a-467c-882c-6c661f39287a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Include\SA2 Mod Loader\magic.h">
@@ -56,11 +62,11 @@
     </ClInclude>
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="Mod\BossTitles.h">
-      <Filter>Mod</Filter>
+    <ClInclude Include="Mod\Bosses\BossTitles.h">
+      <Filter>Mod\Bosses</Filter>
     </ClInclude>
-    <ClInclude Include="Mod\Config.h">
-      <Filter>Mod</Filter>
+    <ClInclude Include="Mod\Config\Config.h">
+      <Filter>Mod\Config</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -70,19 +76,22 @@
     <ClCompile Include="Include\Mod Loader Common\TextConv.cpp">
       <Filter>Include\Mod Loader Common</Filter>
     </ClCompile>
-    <ClCompile Include="Mod\CharacterBossTitles.cpp">
-      <Filter>Mod</Filter>
-    </ClCompile>
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="pch.cpp" />
     <ClCompile Include="Mod\Main.cpp">
       <Filter>Mod</Filter>
     </ClCompile>
-    <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="pch.cpp" />
-    <ClCompile Include="Mod\Config.cpp">
-      <Filter>Mod</Filter>
+    <ClCompile Include="Mod\Bosses\CharacterBossTitles.cpp">
+      <Filter>Mod\Bosses</Filter>
     </ClCompile>
-    <ClCompile Include="Mod\GunRoboTitles.cpp">
-      <Filter>Mod</Filter>
+    <ClCompile Include="Mod\Bosses\GunRoboTitles.cpp">
+      <Filter>Mod\Bosses</Filter>
+    </ClCompile>
+    <ClCompile Include="Mod\Bosses\OtherBossTitles.cpp">
+      <Filter>Mod\Bosses</Filter>
+    </ClCompile>
+    <ClCompile Include="Mod\Config\Config.cpp">
+      <Filter>Mod\Config</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
