@@ -259,7 +259,7 @@ void LoadBossTitle(char id)
 
 	if (title)
 	{
-		if (CurrentLevel == LevelIDs_TailsVsEggman2)
+		if (CurrentLevel == LevelIDs_TailsVsEggman2 || CurrentLevel == LevelIDs_KnucklesVsRouge)
 		{
 			if (title->DisplayTime < 480)
 			{

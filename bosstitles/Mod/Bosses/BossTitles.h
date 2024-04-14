@@ -19,6 +19,8 @@ struct FullBossTitleData
 
 enum BossTitleLetterIDs
 {
+	space = 0,
+	
 	//vs character
 	
 	_A = 1000000,
@@ -60,8 +62,7 @@ enum BossTitleLetterIDs
 	dot,
 	apostrophe,
 	exclamation,
-	question,
-	space = 0,
+	question,	
 
 	//King Boom Boo
 
