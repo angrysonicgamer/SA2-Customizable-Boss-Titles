@@ -161,7 +161,7 @@ BossTitleLetterData FinalhazardLettersDC[]
 	{ fin_D, 15, 25, 0, 16, 32, 0 },
 };
 
-FullBossTitleData FinalhazardRusTitle[]
+FullBossTitleData FinalhazardTitle[]
 {
 	{ arrayptrandlengthT(FinalhazardLettersPC, short), 0, 25, Finalhazard.Bar, 13, 2, 0, Finalhazard.Texlist, 320, 240, 2, WhiteColor },
 	{ arrayptrandlengthT(FinalhazardLettersDC, short), 0, 25, Finalhazard.Bar, 13, 2, 0, Finalhazard.Texlist, 320, 240, 2, WhiteColor },
@@ -169,7 +169,7 @@ FullBossTitleData FinalhazardRusTitle[]
 
 void WriteFinalHazardTitle()
 {
-	Finalhazard = FinalhazardRusTitle[GetBossTitlesStyle()];
+	Finalhazard = FinalhazardTitle[GetBossTitlesStyle()];
 }
 
 
