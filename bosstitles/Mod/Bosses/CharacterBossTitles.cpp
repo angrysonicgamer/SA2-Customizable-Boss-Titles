@@ -3,51 +3,7 @@
 #include "Mod/Config/Config.h"
 
 
-//Externs from config
-
-std::string SonicTitle;
-std::string ShadowTitle;
-std::string TailsTitle;
-std::string EggmanTitle;
-std::string KnucklesTitle;
-std::string RougeTitle;
-std::string AmyTitle;
-std::string MetalSonicTitle;
-std::string TikalTitle;
-std::string ChaosTitle;
-std::string ChaoWalkerTitle;
-std::string DarkChaoTitle;
-
-
-std::vector<BossTitleLetterData> SonicLetters;
-std::vector<BossTitleLetterData> ShadowLetters;
-std::vector<BossTitleLetterData> TailsLetters;
-std::vector<BossTitleLetterData> EggmanLetters;
-std::vector<BossTitleLetterData> KnucklesLetters;
-std::vector<BossTitleLetterData> RougeLetters;
-std::vector<BossTitleLetterData> AmyLetters;
-std::vector<BossTitleLetterData> MetalSonicLetters;
-std::vector<BossTitleLetterData> TikalLetters;
-std::vector<BossTitleLetterData> ChaosLetters;
-std::vector<BossTitleLetterData> ChaoWalkerLetters;
-std::vector<BossTitleLetterData> DarkChaoLetters;
-
-
-FullBossTitleData VsSonic;
-FullBossTitleData VsShadow;
-FullBossTitleData VsTails;
-FullBossTitleData VsEggman;
-FullBossTitleData VsKnuckles;
-FullBossTitleData VsRouge;
-FullBossTitleData VsAmy;
-FullBossTitleData VsMetalSonic;
-FullBossTitleData VsTikal;
-FullBossTitleData VsChaos;
-FullBossTitleData VsChaoWalker;
-FullBossTitleData VsDarkChao;
-
-
-std::map<char, BossTitleLetterData> BossLetters
+std::map<char, BossTitleLetterData> BossTitleStuff::BossLetters
 {
 	{ 'A', { _A, 17, 16, 0, 32, 16, 0 } },
 	{ 'B', { _B, 16, 16, 0, 32, 16, 0 } },
@@ -93,101 +49,39 @@ std::map<char, BossTitleLetterData> BossLetters
 };
 
 
-NJS_TEXNAME VsCharacterTexName[41]; //total number of letters in BossLetters
-NJS_TEXLIST VsCharacterTexlist{ arrayptrandlengthT(VsCharacterTexName, int) };
-
-
-struct BossTitle
+void BossTitleStuff::SetDefaultTitle()
 {
-	std::string DefaultText;
-	std::string* CustomText;
-	std::vector<BossTitleLetterData>& LetterData;
-	FullBossTitleData& BossTitleData;
-};
+	CustomText = DefaultText;
+}
 
-std::vector<BossTitle> BossTitlesData
+void BossTitleStuff::GenerateLetterData()
 {
-	{ "Sonic", &SonicTitle, SonicLetters, VsSonic },
-	{ "Shadow", &ShadowTitle, ShadowLetters, VsShadow },
-	{ "Tails", &TailsTitle, TailsLetters, VsTails },
-	{ "Dr.Eggman", &EggmanTitle, EggmanLetters, VsEggman },
-	{ "Knuckles", &KnucklesTitle, KnucklesLetters, VsKnuckles },
-	{ "Rouge", &RougeTitle, RougeLetters, VsRouge },
-
-	{ "Amy", &AmyTitle, AmyLetters, VsAmy},
-	{ "Metal Sonic", &MetalSonicTitle, MetalSonicLetters, VsMetalSonic},
-	{ "Tikal", &TikalTitle, TikalLetters, VsTikal},
-	{ "Chaos", &ChaosTitle, ChaosLetters, VsChaos },
-	{ "Chao", &ChaoWalkerTitle, ChaoWalkerLetters, VsChaoWalker},
-	{ "Dark Chao", &DarkChaoTitle, DarkChaoLetters, VsDarkChao},
-};
-
-
-void ProcessBossTitles()
-{
-	for (auto& title : BossTitlesData)
+	for (auto& letter : CustomText)
 	{
-		if (title.CustomText->empty())
+		if (BossLetters.count(std::toupper(letter)))
 		{
-			*title.CustomText = title.DefaultText;
-		}
-
-		for (auto& letter : *title.CustomText)
-		{
-			if (BossLetters.count(std::toupper(letter)))
-			{
-				title.LetterData.push_back(BossLetters[std::toupper(letter)]);
-			}			
+			LetterData.push_back(BossLetters[std::toupper(letter)]);
 		}
 	}
 }
 
-
-int CalculateSpacing(const std::vector<BossTitleLetterData>& letterData)
+void BossTitleStuff::SetCharacterSpacing()
 {
-	int maxSpacing = 12;
-	float baseWidth = 320 * ( 3.0f / 4 ) * ( HorizontalResolution / VerticalResolution );
-	int totalWidth = 0;
-	int spacing = maxSpacing;
+	int spacing = CalculateSpacing();
 
-	for (auto& letter : letterData)
+	for (int i = 0; i < LetterData.size() - 1; i++) //add spacing to all letters expect for the last one, so the title will be properly centered
 	{
-		totalWidth += letter.Width;
-	}
-
-	while (spacing > 0)
-	{
-		if (totalWidth + spacing * (letterData.size() - 1) > baseWidth)
-		{
-			spacing--;
-		}
-		else break;
-	}
-	
-	return spacing;
-}
-
-void SetCharacterSpacing()
-{
-	for (auto& title : BossTitlesData)
-	{
-		int spacing = CalculateSpacing(title.LetterData);
-
-		for (int i = 0; i < title.LetterData.size() - 1; i++) //add spacing to all letters expect for the last one, so the title will be properly centered
-		{
-			title.LetterData[i].Width += spacing;
-		}
+		LetterData[i].Width += spacing;
 	}
 }
 
-
-int CalculateDisplayTime(const BossTitle& title)
+int BossTitleStuff::CalculateDisplayTime()
 {
 	int defaultDisplayTime = 360;
 	int delay = 20;
 	int displayTime = 120;
 
-	for (auto& letter : title.LetterData)
+	for (auto& letter : LetterData)
 	{
 		displayTime += delay;
 	}
@@ -195,11 +89,120 @@ int CalculateDisplayTime(const BossTitle& title)
 	return displayTime < defaultDisplayTime ? defaultDisplayTime : displayTime;
 }
 
+int BossTitleStuff::CalculateSpacing()
+{
+	int maxSpacing = 12; //the game's default value for character boss titles
+	float baseWidth = 320 * (3.0f / 4) * (HorizontalResolution / VerticalResolution);
+	int totalWidth = 0;
+	int spacing = maxSpacing;
+
+	for (auto& letter : LetterData)
+	{
+		totalWidth += letter.Width;
+	}
+
+	while (spacing > 0)
+	{
+		if (totalWidth + spacing * (LetterData.size() - 1) > baseWidth)
+		{
+			spacing--;
+		}
+		else break;
+	}
+
+	return spacing;
+}
+
+
+//Externs from config
+
+std::string SonicTitle;
+std::string ShadowTitle;
+std::string TailsTitle;
+std::string EggmanTitle;
+std::string KnucklesTitle;
+std::string RougeTitle;
+std::string AmyTitle;
+std::string MetalSonicTitle;
+std::string TikalTitle;
+std::string ChaosTitle;
+std::string ChaoWalkerTitle;
+std::string DarkChaoTitle;
+
+//Letter data
+
+std::vector<BossTitleLetterData> SonicLetters;
+std::vector<BossTitleLetterData> ShadowLetters;
+std::vector<BossTitleLetterData> TailsLetters;
+std::vector<BossTitleLetterData> EggmanLetters;
+std::vector<BossTitleLetterData> KnucklesLetters;
+std::vector<BossTitleLetterData> RougeLetters;
+std::vector<BossTitleLetterData> AmyLetters;
+std::vector<BossTitleLetterData> MetalSonicLetters;
+std::vector<BossTitleLetterData> TikalLetters;
+std::vector<BossTitleLetterData> ChaosLetters;
+std::vector<BossTitleLetterData> ChaoWalkerLetters;
+std::vector<BossTitleLetterData> DarkChaoLetters;
+
+//Boss title data
+
+FullBossTitleData VsSonic;
+FullBossTitleData VsShadow;
+FullBossTitleData VsTails;
+FullBossTitleData VsEggman;
+FullBossTitleData VsKnuckles;
+FullBossTitleData VsRouge;
+FullBossTitleData VsAmy;
+FullBossTitleData VsMetalSonic;
+FullBossTitleData VsTikal;
+FullBossTitleData VsChaos;
+FullBossTitleData VsChaoWalker;
+FullBossTitleData VsDarkChao;
+
+//Texlist
+
+NJS_TEXNAME VsCharacterTexName[41]; //total number of letters in BossLetters
+NJS_TEXLIST VsCharacterTexlist{ arrayptrandlengthT(VsCharacterTexName, int) };
+
+
+std::vector<BossTitleStuff> BossTitlesData
+{
+	{ "Sonic", SonicTitle, SonicLetters, VsSonic },
+	{ "Shadow", ShadowTitle, ShadowLetters, VsShadow },
+	{ "Tails", TailsTitle, TailsLetters, VsTails },
+	{ "Dr.Eggman", EggmanTitle, EggmanLetters, VsEggman },
+	{ "Knuckles", KnucklesTitle, KnucklesLetters, VsKnuckles },
+	{ "Rouge", RougeTitle, RougeLetters, VsRouge },
+
+	{ "Amy", AmyTitle, AmyLetters, VsAmy},
+	{ "Metal Sonic", MetalSonicTitle, MetalSonicLetters, VsMetalSonic},
+	{ "Tikal", TikalTitle, TikalLetters, VsTikal},
+	{ "Chaos", ChaosTitle, ChaosLetters, VsChaos },
+	{ "Chao", ChaoWalkerTitle, ChaoWalkerLetters, VsChaoWalker},
+	{ "Dark Chao", DarkChaoTitle, DarkChaoLetters, VsDarkChao},
+};
+
+
+void ProcessBossTitles()
+{
+	for (auto& title : BossTitlesData)
+	{
+		if (title.CustomText.empty())
+		{
+			title.SetDefaultTitle();
+		}
+
+		title.GenerateLetterData();
+		title.SetCharacterSpacing();
+	}
+}
+
+
 void SetUpBossTitles()
 {
 	for (auto& title : BossTitlesData)
 	{
-		title.BossTitleData = { title.LetterData.data(), (short)title.LetterData.size(), 0, 20, nullptr, 0, 3, CalculateDisplayTime(title), &VsCharacterTexlist, 320, 240, 2, WhiteColor };
+		title.BossTitleData = { title.LetterData.data(), (short)title.LetterData.size(), 0, 20, nullptr, 0, 3, title.CalculateDisplayTime(), &VsCharacterTexlist, 320, 240, 2, WhiteColor };
 	}
 }
 
@@ -425,7 +428,7 @@ __declspec(naked) void LoadEggman2BossTitleTex()
 void InitCharacterBossTitles()
 {
 	ProcessBossTitles();
-	SetCharacterSpacing();
+	//SetCharacterSpacing();
 	SetUpBossTitles();
 
 	WriteJump((void*)0x4C8124, LoadShadow2BossTitle);
