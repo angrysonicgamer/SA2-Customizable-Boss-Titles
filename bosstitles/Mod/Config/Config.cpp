@@ -11,6 +11,13 @@ extern std::string EggmanTitle;
 extern std::string KnucklesTitle;
 extern std::string RougeTitle;
 
+extern std::string AmyTitle;
+extern std::string MetalSonicTitle;
+extern std::string TikalTitle;
+extern std::string ChaosTitle;
+extern std::string ChaoWalkerTitle;
+extern std::string DarkChaoTitle;
+
 std::string BossTitlesStyle;
 
 int GetBossTitlesStyle()
@@ -24,13 +31,21 @@ void ReadConfig(const char* modPath)
 {
 	IniFile config(std::string(modPath) + "\\config.ini");
 
-	SonicTitle = config.getString("Customization", "SonicTitle", "Sonic");
-	ShadowTitle = config.getString("Customization", "ShadowTitle", "Shadow");
-	TailsTitle = config.getString("Customization", "TailsTitle", "Tails");
-	EggmanTitle = config.getString("Customization", "EggmanTitle", "Dr.Eggman");
-	KnucklesTitle = config.getString("Customization", "KnucklesTitle", "Knuckles");	
-	RougeTitle = config.getString("Customization", "RougeTitle", "Rouge");
 	BossTitlesStyle = config.getString("Style", "BossTitlesStyle", "PC");
+
+	SonicTitle = config.getString("CustomizationDefault", "SonicTitle", "Sonic");
+	ShadowTitle = config.getString("CustomizationDefault", "ShadowTitle", "Shadow");
+	TailsTitle = config.getString("CustomizationDefault", "TailsTitle", "Tails");
+	EggmanTitle = config.getString("CustomizationDefault", "EggmanTitle", "Dr.Eggman");
+	KnucklesTitle = config.getString("CustomizationDefault", "KnucklesTitle", "Knuckles");	
+	RougeTitle = config.getString("CustomizationDefault", "RougeTitle", "Rouge");
+
+	AmyTitle = config.getString("CustomizationAlt", "AmyTitle", "Amy");
+	MetalSonicTitle = config.getString("CustomizationAlt", "MetalSonicTitle", "Metal Sonic");
+	TikalTitle = config.getString("CustomizationAlt", "TikalTitle", "Tikal");
+	ChaosTitle = config.getString("CustomizationAlt", "ChaosTitle", "Chaos");
+	ChaoWalkerTitle = config.getString("CustomizationAlt", "ChaoWalkerTitle", "Chao");
+	DarkChaoTitle = config.getString("CustomizationAlt", "DarkChaoTitle", "Dark Chao");
 }
 
 

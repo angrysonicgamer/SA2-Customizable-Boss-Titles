@@ -11,15 +11,12 @@ std::string TailsTitle;
 std::string EggmanTitle;
 std::string KnucklesTitle;
 std::string RougeTitle;
-
-//For CharSel
-
-std::string AmyTitle = "Amy";
-std::string MetalSonicTitle = "Metal Sonic";
-std::string TikalTitle = "Tikal";
-std::string ChaosTitle = "Chaos";
-std::string ChaoWalkerTitle = "Chao";
-std::string DarkChaoTitle = "Dark Chao";
+std::string AmyTitle;
+std::string MetalSonicTitle;
+std::string TikalTitle;
+std::string ChaosTitle;
+std::string ChaoWalkerTitle;
+std::string DarkChaoTitle;
 
 
 std::vector<BossTitleLetterData> SonicLetters;
@@ -28,7 +25,6 @@ std::vector<BossTitleLetterData> TailsLetters;
 std::vector<BossTitleLetterData> EggmanLetters;
 std::vector<BossTitleLetterData> KnucklesLetters;
 std::vector<BossTitleLetterData> RougeLetters;
-
 std::vector<BossTitleLetterData> AmyLetters;
 std::vector<BossTitleLetterData> MetalSonicLetters;
 std::vector<BossTitleLetterData> TikalLetters;
@@ -43,7 +39,6 @@ FullBossTitleData VsTails;
 FullBossTitleData VsEggman;
 FullBossTitleData VsKnuckles;
 FullBossTitleData VsRouge;
-
 FullBossTitleData VsAmy;
 FullBossTitleData VsMetalSonic;
 FullBossTitleData VsTikal;
@@ -119,12 +114,12 @@ std::vector<BossTitle> BossTitlesData
 	{ "Knuckles", &KnucklesTitle, KnucklesLetters, VsKnuckles },
 	{ "Rouge", &RougeTitle, RougeLetters, VsRouge },
 
-	{ AmyTitle, &AmyTitle, AmyLetters, VsAmy },
-	{ MetalSonicTitle, &MetalSonicTitle, MetalSonicLetters, VsMetalSonic },
-	{ TikalTitle, &TikalTitle, TikalLetters, VsTikal },
-	{ ChaosTitle, &ChaosTitle, ChaosLetters, VsChaos },
-	{ ChaoWalkerTitle, &ChaoWalkerTitle, ChaoWalkerLetters, VsChaoWalker },
-	{ DarkChaoTitle, &DarkChaoTitle, DarkChaoLetters, VsDarkChao },
+	{ "Amy", &AmyTitle, AmyLetters, VsAmy},
+	{ "Metal Sonic", &MetalSonicTitle, MetalSonicLetters, VsMetalSonic},
+	{ "Tikal", &TikalTitle, TikalLetters, VsTikal},
+	{ "Chaos", &ChaosTitle, ChaosLetters, VsChaos },
+	{ "Chao", &ChaoWalkerTitle, ChaoWalkerLetters, VsChaoWalker},
+	{ "Dark Chao", &DarkChaoTitle, DarkChaoLetters, VsDarkChao},
 };
 
 
