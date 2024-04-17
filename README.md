@@ -7,7 +7,7 @@ Main features:
 * Boss HP gauge also remade in 4x.
 * All boss titles have edited setups in the code, including GUN Robo and other non-character bosses.
 * All boss titles are set to be properly centered on the screen (the vanilla character titles were slightly off-centered because of non-zero Spacing parameter in boss title data structures and that parameter affects the last letter as well).
-* Character titles are customizable via mod config. Supported letters: Latin alphabet (case-insensitive), digits, space, dot, comma, apostrophe, exclamation and question marks. If the set title have other letters, they will be skipped. Empty titles will be replaced with the default ones.
+* Character titles are customizable via mod config. Supported letters: Latin alphabet (case-insensitive), digits, space, dot, comma, apostrophe, exclamation and question marks. If the set title has other letters, they will be skipped. Empty titles will be replaced with the default ones.
 * Customizable boss titles have auto-calculated spacing (to fit the screen properly) and display time. But I wouldn't recommend making very long titles, ~20 letters should be enough for 16:9 aspect ratio.
 * Two graphic styles: PC (vanilla) and Dreamcast/Gamecube (for King Boom Boo, The Biolizard and The Finalhazard).
 * Fixed a lot of typos in GUN Robo specs (mostly made by SOC).
