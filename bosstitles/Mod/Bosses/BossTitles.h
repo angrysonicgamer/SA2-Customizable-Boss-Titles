@@ -60,6 +60,7 @@ enum BossTitleLetterIDs
 	_8,
 	_9,
 	dot,
+	comma,
 	apostrophe,
 	exclamation,
 	question,	

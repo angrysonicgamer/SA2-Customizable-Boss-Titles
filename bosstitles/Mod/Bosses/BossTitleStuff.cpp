@@ -42,6 +42,7 @@ std::map<char, BossTitleLetterData> BossTitleStuff::BossLetters
 	{ '8', { _8, 16, 16, 0, 32, 16, 0 } },
 	{ '9', { _9, 16, 16, 0, 32, 16, 0 } },
 	{ '.', { dot, 6, 16, 0, 32, 16, 0 } },
+	{ ',', { comma, 6, 16, 0, 32, 16, 0 } },
 	{ '\'', { apostrophe, 6, 16, 0, 32, 16, 0 } },
 	{ '!', { exclamation, 6, 16, 0, 32, 16, 0 } },
 	{ '?', { question, 15, 16, 0, 32, 16, 0 } },
