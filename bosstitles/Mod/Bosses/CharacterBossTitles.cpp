@@ -51,7 +51,7 @@ FullBossTitleData VsDarkChao;
 
 //Texlist
 
-NJS_TEXNAME VsCharacterTexName[41]; //total number of letters in BossLetters
+NJS_TEXNAME VsCharacterTexName[42]; //total number of letters in BossLetters
 NJS_TEXLIST VsCharacterTexlist{ arrayptrandlengthT(VsCharacterTexName, int) };
 
 
