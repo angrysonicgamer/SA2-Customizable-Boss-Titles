@@ -34,6 +34,7 @@
     <ClInclude Include="Include\SA2 Mod Loader\SA2Structs.h" />
     <ClInclude Include="Include\SA2 Mod Loader\SA2Variables.h" />
     <ClInclude Include="Mod\Bosses\BossTitles.h" />
+    <ClInclude Include="Mod\Bosses\BossTitleStuff.h" />
     <ClInclude Include="Mod\Config\Config.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
@@ -41,6 +42,7 @@
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="Include\Mod Loader Common\IniFile.cpp" />
     <ClCompile Include="Include\Mod Loader Common\TextConv.cpp" />
+    <ClCompile Include="Mod\Bosses\BossTitleStuff.cpp" />
     <ClCompile Include="Mod\Bosses\CharacterBossTitles.cpp" />
     <ClCompile Include="Mod\Bosses\GunRoboTitles.cpp" />
     <ClCompile Include="Mod\Bosses\OtherBossTitles.cpp" />

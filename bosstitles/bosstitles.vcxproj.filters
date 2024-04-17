@@ -68,6 +68,9 @@
     <ClInclude Include="Mod\Config\Config.h">
       <Filter>Mod\Config</Filter>
     </ClInclude>
+    <ClInclude Include="Mod\Bosses\BossTitleStuff.h">
+      <Filter>Mod\Bosses</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Include\Mod Loader Common\IniFile.cpp">
@@ -92,6 +95,9 @@
     </ClCompile>
     <ClCompile Include="Mod\Config\Config.cpp">
       <Filter>Mod\Config</Filter>
+    </ClCompile>
+    <ClCompile Include="Mod\Bosses\BossTitleStuff.cpp">
+      <Filter>Mod\Bosses</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

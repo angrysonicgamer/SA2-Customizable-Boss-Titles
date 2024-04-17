@@ -17,27 +17,6 @@ struct FullBossTitleData
 	int Color;
 };
 
-class BossTitleStuff
-{
-private:
-	static std::map<char, BossTitleLetterData> BossLetters;
-
-public:
-	std::string DefaultText;
-	std::string& CustomText;
-	std::vector<BossTitleLetterData>& LetterData;
-	FullBossTitleData& BossTitleData;
-
-private:
-	int CalculateSpacing();
-
-public:
-	void SetDefaultTitle();
-	void GenerateLetterData();
-	void SetCharacterSpacing();
-	int CalculateDisplayTime();
-};
-
 enum BossTitleLetterIDs
 {
 	space = 0,
