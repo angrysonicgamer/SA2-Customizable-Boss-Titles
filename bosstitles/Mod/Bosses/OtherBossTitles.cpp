@@ -3,6 +3,13 @@
 #include "Mod/Config/Config.h"
 
 
+int GetBossTitlesStyle()
+{
+	if (Config::BossTitlesStyle == "PC") return 0;
+	if (Config::BossTitlesStyle == "DC/GC") return 1;
+}
+
+
 //King Boom Boo
 
 BossTitleLetterData KBBLettersPC[]

@@ -4,21 +4,6 @@
 #include "Mod/Config/Config.h"
 
 
-//Externs from config
-
-std::string SonicTitle;
-std::string ShadowTitle;
-std::string TailsTitle;
-std::string EggmanTitle;
-std::string KnucklesTitle;
-std::string RougeTitle;
-std::string AmyTitle;
-std::string MetalSonicTitle;
-std::string TikalTitle;
-std::string ChaosTitle;
-std::string ChaoWalkerTitle;
-std::string DarkChaoTitle;
-
 //Letter data
 
 std::vector<BossTitleLetterData> SonicLetters;
@@ -57,19 +42,19 @@ NJS_TEXLIST VsCharacterTexlist{ arrayptrandlengthT(VsCharacterTexName, int) };
 
 std::vector<BossTitleStuff> BossTitlesData
 {
-	{ "Sonic", SonicTitle, SonicLetters, VsSonic },
-	{ "Shadow", ShadowTitle, ShadowLetters, VsShadow },
-	{ "Tails", TailsTitle, TailsLetters, VsTails },
-	{ "Dr.Eggman", EggmanTitle, EggmanLetters, VsEggman },
-	{ "Knuckles", KnucklesTitle, KnucklesLetters, VsKnuckles },
-	{ "Rouge", RougeTitle, RougeLetters, VsRouge },
+	{ "Sonic", Config::SonicTitle, SonicLetters, VsSonic },
+	{ "Shadow", Config::ShadowTitle, ShadowLetters, VsShadow },
+	{ "Tails", Config::TailsTitle, TailsLetters, VsTails },
+	{ "Dr.Eggman", Config::EggmanTitle, EggmanLetters, VsEggman },
+	{ "Knuckles", Config::KnucklesTitle, KnucklesLetters, VsKnuckles },
+	{ "Rouge", Config::RougeTitle, RougeLetters, VsRouge },
 
-	{ "Amy", AmyTitle, AmyLetters, VsAmy},
-	{ "Metal Sonic", MetalSonicTitle, MetalSonicLetters, VsMetalSonic},
-	{ "Tikal", TikalTitle, TikalLetters, VsTikal},
-	{ "Chaos", ChaosTitle, ChaosLetters, VsChaos },
-	{ "Chao", ChaoWalkerTitle, ChaoWalkerLetters, VsChaoWalker},
-	{ "Dark Chao", DarkChaoTitle, DarkChaoLetters, VsDarkChao},
+	{ "Amy", Config::AmyTitle, AmyLetters, VsAmy},
+	{ "Metal Sonic", Config::MetalSonicTitle, MetalSonicLetters, VsMetalSonic},
+	{ "Tikal", Config::TikalTitle, TikalLetters, VsTikal},
+	{ "Chaos", Config::ChaosTitle, ChaosLetters, VsChaos },
+	{ "Chao", Config::ChaoWalkerTitle, ChaoWalkerLetters, VsChaoWalker},
+	{ "Dark Chao", Config::DarkChaoTitle, DarkChaoLetters, VsDarkChao},
 };
 
 
@@ -144,7 +129,7 @@ void LoadBossTitle(char id)
 			}
 		}
 
-		LoadBossTitleExec(nullptr, (BossTitleData*)title);
+		LoadBossTitleExec(nullptr, reinterpret_cast<BossTitleData*>(title));
 	}
 }
 

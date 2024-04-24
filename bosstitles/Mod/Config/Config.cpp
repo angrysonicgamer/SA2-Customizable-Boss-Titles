@@ -1,33 +1,28 @@
 #include "pch.h"
+#include "Config.h"
 #include "Include/Mod Loader Common/IniFile.hpp"
 
 
 #define ReplaceBossTitlePAK(file) helperFunctions.ReplaceFile("resource\\gd_PC\\" file ".prs", "resource\\gd_PC\\PRS\\dcstyle\\" file ".pak");
 
-extern std::string SonicTitle;
-extern std::string ShadowTitle;
-extern std::string TailsTitle;
-extern std::string EggmanTitle;
-extern std::string KnucklesTitle;
-extern std::string RougeTitle;
+std::string Config::SonicTitle;
+std::string Config::ShadowTitle;
+std::string Config::TailsTitle;
+std::string Config::EggmanTitle;
+std::string Config::KnucklesTitle;
+std::string Config::RougeTitle;
 
-extern std::string AmyTitle;
-extern std::string MetalSonicTitle;
-extern std::string TikalTitle;
-extern std::string ChaosTitle;
-extern std::string ChaoWalkerTitle;
-extern std::string DarkChaoTitle;
+std::string Config::AmyTitle;
+std::string Config::MetalSonicTitle;
+std::string Config::TikalTitle;
+std::string Config::ChaosTitle;
+std::string Config::ChaoWalkerTitle;
+std::string Config::DarkChaoTitle;
 
-std::string BossTitlesStyle;
-
-int GetBossTitlesStyle()
-{
-	if (BossTitlesStyle == "PC") return 0;
-	if (BossTitlesStyle == "DC/GC") return 1;
-}
+std::string Config::BossTitlesStyle;
 
 
-void ReadConfig(const char* modPath)
+void Config::Read(const char* modPath)
 {
 	IniFile config(std::string(modPath) + "\\config.ini");
 
@@ -56,10 +51,9 @@ void LoadDCStyleBossTitleTextures(const HelperFunctions& helperFunctions)
 	ReplaceBossTitlePAK("titletex_bosslast2");
 }
 
-
-void InitConfig(const char* modPath, const HelperFunctions& helperFunctions)
+void Config::Init(const char* modPath, const HelperFunctions& helperFunctions)
 {
-	ReadConfig(modPath);
+	Read(modPath);
 
 	if (BossTitlesStyle == "DC/GC")
 	{
