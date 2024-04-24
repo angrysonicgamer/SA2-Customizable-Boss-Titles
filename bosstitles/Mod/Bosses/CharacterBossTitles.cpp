@@ -4,7 +4,7 @@
 #include "Mod/Config/Config.h"
 
 
-//Letter data
+// Letter data
 
 std::vector<BossTitleLetterData> SonicLetters;
 std::vector<BossTitleLetterData> ShadowLetters;
@@ -19,7 +19,7 @@ std::vector<BossTitleLetterData> ChaosLetters;
 std::vector<BossTitleLetterData> ChaoWalkerLetters;
 std::vector<BossTitleLetterData> DarkChaoLetters;
 
-//Boss title data
+// Boss title data
 
 FullBossTitleData VsSonic;
 FullBossTitleData VsShadow;
@@ -34,7 +34,7 @@ FullBossTitleData VsChaos;
 FullBossTitleData VsChaoWalker;
 FullBossTitleData VsDarkChao;
 
-//Texlist
+// Texlist
 
 NJS_TEXNAME VsCharacterTexName[42]; //total number of letters in BossLetters
 NJS_TEXLIST VsCharacterTexlist{ arrayptrandlengthT(VsCharacterTexName, int) };
@@ -72,52 +72,33 @@ void ProcessBossTitles()
 }
 
 
-//Character Select (Plus) code for compatibility
+// Edited Character Select (Plus) code for compatibility
+
+static std::map<char, FullBossTitleData*> BossTitles
+{
+	{ Characters_Sonic, &VsSonic },
+	{ Characters_Shadow, &VsShadow },
+	{ Characters_Tails, &VsTails },
+	{ Characters_MechTails, &VsTails },
+	{ Characters_Eggman, &VsEggman },
+	{ Characters_MechEggman, &VsEggman },
+	{ Characters_Knuckles, &VsKnuckles },
+	{ Characters_Rouge, &VsRouge },
+	{ Characters_Amy, &VsAmy },
+	{ Characters_MetalSonic, &VsMetalSonic },
+	{ Characters_Tikal, &VsTikal },
+	{ Characters_Chaos, &VsChaos },
+	{ Characters_ChaoWalker, &VsChaoWalker },
+	{ Characters_DarkChaoWalker, &VsDarkChao },
+};
 
 void LoadBossTitle(char id)
 {
 	FullBossTitleData* title = nullptr;
-	switch (id)
+	if (BossTitles.count(id))
 	{
-	case Characters_Sonic:
-		title = &VsSonic;
-		break;
-	case Characters_Shadow:
-		title = &VsShadow;
-		break;
-	case Characters_Tails:
-	case Characters_MechTails:
-		title = &VsTails;
-		break;
-	case Characters_Eggman:
-	case Characters_MechEggman:
-		title = &VsEggman;
-		break;
-	case Characters_Knuckles:
-		title = &VsKnuckles;
-		break;
-	case Characters_Rouge:
-		title = &VsRouge;
-		break;
-	case Characters_Amy:
-		title = &VsAmy;
-		break;
-	case Characters_MetalSonic:
-		title = &VsMetalSonic;
-		break;
-	case Characters_Tikal:
-		title = &VsTikal;
-		break;
-	case Characters_Chaos:
-		title = &VsChaos;
-		break;
-	case Characters_ChaoWalker:
-		title = &VsChaoWalker;
-		break;
-	case Characters_DarkChaoWalker:
-		title = &VsDarkChao;
-		break;
-	}
+		title = BossTitles[id];
+	}	
 
 	if (title)
 	{
@@ -207,8 +188,7 @@ void FreeTitleTex(ObjectMaster* obj)
 
 void LoadBossTitleTex(ObjectMaster* obj, char id)
 {
-	const char* vscharacter = "titletex_vscharacter";
-	LoadTextureList(vscharacter, &VsCharacterTexlist);
+	LoadTextureList("titletex_vscharacter", &VsCharacterTexlist);
 	obj->DeleteSub = FreeTitleTex;
 }
 
