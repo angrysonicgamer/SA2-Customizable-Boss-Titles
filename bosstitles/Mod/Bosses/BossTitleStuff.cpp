@@ -90,7 +90,7 @@ void BossTitleStuff::SetCharacterSpacing()
 {
 	int spacing = CalculateSpacing();
 
-	for (int i = 0; i < LetterData.size() - 1; i++) //add spacing to all letters expect for the last one, so the title will be properly centered
+	for (int i = 0; i < LetterData.size() - 1; i++) //add spacing to all letters except for the last one, so the title will be properly centered
 	{
 		LetterData[i].Width += spacing;
 	}
