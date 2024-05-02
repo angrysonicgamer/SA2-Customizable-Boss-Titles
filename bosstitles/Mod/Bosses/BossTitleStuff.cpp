@@ -64,7 +64,7 @@ void BossTitleStuff::GenerateLetterData()
 
 int BossTitleStuff::CalculateSpacing()
 {
-	int maxSpacing = 12; //the game's default value for character boss titles
+	int maxSpacing = 12; // the game's default value for character boss titles
 	float baseWidth = 320 * (3.0f / 4) * (HorizontalResolution / VerticalResolution);
 	int totalWidth = 0;
 	int spacing = maxSpacing;
@@ -90,7 +90,7 @@ void BossTitleStuff::SetCharacterSpacing()
 {
 	int spacing = CalculateSpacing();
 
-	for (int i = 0; i < LetterData.size() - 1; i++) //add spacing to all letters except for the last one, so the title will be properly centered
+	for (int i = 0; i < LetterData.size() - 1; i++) // add spacing to all letters except for the last one, so the title will be properly centered
 	{
 		LetterData[i].Width += spacing;
 	}
@@ -101,12 +101,7 @@ int BossTitleStuff::CalculateDisplayTime()
 {
 	int defaultDisplayTime = 360;
 	int delay = 20;
-	int displayTime = 120;
-
-	for (auto& letter : LetterData)
-	{
-		displayTime += delay;
-	}
+	int displayTime = 120 + delay * LetterData.size();
 
 	return displayTime < defaultDisplayTime ? defaultDisplayTime : displayTime;
 }
