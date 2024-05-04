@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "Config.h"
-#include "Include/Mod Loader Common/IniFile.hpp"
+#include "IniFile.hpp"
 
 
 #define ReplaceBossTitlePAK(file) helperFunctions.ReplaceFile("resource\\gd_PC\\" file ".prs", "resource\\gd_PC\\PRS\\dcstyle\\" file ".pak");
@@ -32,7 +32,7 @@ void Config::Read(const char* modPath)
 	ShadowTitle = config.getString("CustomizationDefault", "ShadowTitle", "Shadow");
 	TailsTitle = config.getString("CustomizationDefault", "TailsTitle", "Tails");
 	EggmanTitle = config.getString("CustomizationDefault", "EggmanTitle", "Dr.Eggman");
-	KnucklesTitle = config.getString("CustomizationDefault", "KnucklesTitle", "Knuckles");	
+	KnucklesTitle = config.getString("CustomizationDefault", "KnucklesTitle", "Knuckles");
 	RougeTitle = config.getString("CustomizationDefault", "RougeTitle", "Rouge");
 
 	AmyTitle = config.getString("CustomizationAlt", "AmyTitle", "Amy");

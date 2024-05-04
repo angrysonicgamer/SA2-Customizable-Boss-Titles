@@ -1,15 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Include">
-      <UniqueIdentifier>{6b781464-d8dd-4270-80e3-a8e03533aa44}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Include\SA2 Mod Loader">
-      <UniqueIdentifier>{7dad1a17-c2bb-4a5d-98ee-34cf226a27ec}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Include\Mod Loader Common">
-      <UniqueIdentifier>{e4e28a08-b616-42a2-ba83-fab0c6506d64}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Mod">
       <UniqueIdentifier>{d28bceff-4fc9-443f-a12a-cfd7aa435906}</UniqueIdentifier>
     </Filter>
@@ -21,45 +12,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Include\SA2 Mod Loader\magic.h">
-      <Filter>Include\SA2 Mod Loader</Filter>
-    </ClInclude>
-    <ClInclude Include="Include\SA2 Mod Loader\MemAccess.h">
-      <Filter>Include\SA2 Mod Loader</Filter>
-    </ClInclude>
-    <ClInclude Include="Include\SA2 Mod Loader\ninja.h">
-      <Filter>Include\SA2 Mod Loader</Filter>
-    </ClInclude>
-    <ClInclude Include="Include\SA2 Mod Loader\njdef.h">
-      <Filter>Include\SA2 Mod Loader</Filter>
-    </ClInclude>
-    <ClInclude Include="Include\SA2 Mod Loader\SA2Enums.h">
-      <Filter>Include\SA2 Mod Loader</Filter>
-    </ClInclude>
-    <ClInclude Include="Include\SA2 Mod Loader\SA2Functions.h">
-      <Filter>Include\SA2 Mod Loader</Filter>
-    </ClInclude>
-    <ClInclude Include="Include\SA2 Mod Loader\SA2ModInfo.h">
-      <Filter>Include\SA2 Mod Loader</Filter>
-    </ClInclude>
-    <ClInclude Include="Include\SA2 Mod Loader\SA2ModLoader.h">
-      <Filter>Include\SA2 Mod Loader</Filter>
-    </ClInclude>
-    <ClInclude Include="Include\SA2 Mod Loader\SA2Structs.h">
-      <Filter>Include\SA2 Mod Loader</Filter>
-    </ClInclude>
-    <ClInclude Include="Include\SA2 Mod Loader\SA2Variables.h">
-      <Filter>Include\SA2 Mod Loader</Filter>
-    </ClInclude>
-    <ClInclude Include="Include\Mod Loader Common\IniFile.hpp">
-      <Filter>Include\Mod Loader Common</Filter>
-    </ClInclude>
-    <ClInclude Include="Include\Mod Loader Common\TextConv.hpp">
-      <Filter>Include\Mod Loader Common</Filter>
-    </ClInclude>
-    <ClInclude Include="Include\Mod Loader Common\Utils.hpp">
-      <Filter>Include\Mod Loader Common</Filter>
-    </ClInclude>
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Mod\Bosses\BossTitles.h">
@@ -73,12 +25,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Include\Mod Loader Common\IniFile.cpp">
-      <Filter>Include\Mod Loader Common</Filter>
-    </ClCompile>
-    <ClCompile Include="Include\Mod Loader Common\TextConv.cpp">
-      <Filter>Include\Mod Loader Common</Filter>
-    </ClCompile>
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="Mod\Main.cpp">

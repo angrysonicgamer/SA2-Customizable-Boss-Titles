@@ -20,19 +20,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
-    <ClInclude Include="Include\Mod Loader Common\IniFile.hpp" />
-    <ClInclude Include="Include\Mod Loader Common\TextConv.hpp" />
-    <ClInclude Include="Include\Mod Loader Common\Utils.hpp" />
-    <ClInclude Include="Include\SA2 Mod Loader\magic.h" />
-    <ClInclude Include="Include\SA2 Mod Loader\MemAccess.h" />
-    <ClInclude Include="Include\SA2 Mod Loader\ninja.h" />
-    <ClInclude Include="Include\SA2 Mod Loader\njdef.h" />
-    <ClInclude Include="Include\SA2 Mod Loader\SA2Enums.h" />
-    <ClInclude Include="Include\SA2 Mod Loader\SA2Functions.h" />
-    <ClInclude Include="Include\SA2 Mod Loader\SA2ModInfo.h" />
-    <ClInclude Include="Include\SA2 Mod Loader\SA2ModLoader.h" />
-    <ClInclude Include="Include\SA2 Mod Loader\SA2Structs.h" />
-    <ClInclude Include="Include\SA2 Mod Loader\SA2Variables.h" />
     <ClInclude Include="Mod\Bosses\BossTitles.h" />
     <ClInclude Include="Mod\Bosses\BossTitleStuff.h" />
     <ClInclude Include="Mod\Config\Config.h" />
@@ -40,8 +27,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="Include\Mod Loader Common\IniFile.cpp" />
-    <ClCompile Include="Include\Mod Loader Common\TextConv.cpp" />
     <ClCompile Include="Mod\Bosses\BossTitleStuff.cpp" />
     <ClCompile Include="Mod\Bosses\CharacterBossTitles.cpp" />
     <ClCompile Include="Mod\Bosses\GunRoboTitles.cpp" />
@@ -129,7 +114,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)sa2-mod-loader\SA2ModLoader\include;$(SolutionDir)sa2-mod-loader\mod-loader-common\ModLoaderCommon;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -137,6 +122,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
+      <AdditionalDependencies>$(SolutionDir)bin\ModLoaderCommon.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
