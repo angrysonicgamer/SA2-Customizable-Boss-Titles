@@ -6,14 +6,11 @@
 
 struct GunRoboLetterData
 {
-	int ID;
+	int Letter;
 	float Width;
 };
 
-DataArray(GunRoboLetterData, GunRoboLetterWidths, 0x11188A8, 20);
-
-
-enum GunRoboBossTitleLetterIDs
+enum GunRoboLetterIDs : int8_t
 {
 	gun_1,
 	gun_3,
@@ -35,7 +32,9 @@ enum GunRoboBossTitleLetterIDs
 	gun_x,
 	gun_A,
 	gun_space,
+	gun_terminator,
 };
+
 
 GunRoboLetterData NewLetterWidths[]
 {
@@ -64,9 +63,5 @@ GunRoboLetterData NewLetterWidths[]
 
 void SetUpGunRoboFont()
 {
-	int size = std::size(NewLetterWidths);
-	for (int i = 0; i < size; i++)
-	{
-		GunRoboLetterWidths[i] = NewLetterWidths[i];
-	}
+	WriteData((float**)0x5D8523, &NewLetterWidths->Width);
 };
