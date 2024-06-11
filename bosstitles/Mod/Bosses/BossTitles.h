@@ -8,13 +8,20 @@ struct FullBossTitleData
 	int Delay;
 	BossTitleLetterData* Bar;
 	short BarFragmentsCount;
-	short DisplayMode; //default value = 3 (displays all letters, doesn't ignore scale and display time)
+	short DisplayMode; // uses flags
 	int DisplayTime;
 	NJS_TEXLIST* Texlist;
 	float X;
 	float Y;
 	float Scale;
 	int Color;
+};
+
+enum BossTitleDisplayFlags : short
+{
+	BossTitle_SetDisplayTime = 1, // DisplayTime = 0 if not set (boss title doesn't disappear in this case, unless some other code makes it disappear)
+	BossTitle_SetScale = 2, // Scale = 1.0 if not set
+	BossTitle_IgnoreDelay = 4, // Delay = 0 if set (displays only first letter in this case), use set delay if not set
 };
 
 enum BossTitleLetterIDs

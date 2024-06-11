@@ -117,5 +117,5 @@ void BossTitleStuff::SetUpBossTitle(NJS_TEXLIST* texlist)
 {
 	GenerateLetterData();
 	SetCharacterSpacing();
-	BossTitleData = { LetterData.data(), (short)LetterData.size(), 0, 20, nullptr, 0, 3, CalculateDisplayTime(), texlist, 320, 240, 2, WhiteColor };
+	BossTitleData = { LetterData.data(), (short)LetterData.size(), 0, 20, nullptr, 0, BossTitle_SetDisplayTime | BossTitle_SetScale, CalculateDisplayTime(), texlist, 320.0f, 240.0f, 2.0f, WhiteColor };
 }

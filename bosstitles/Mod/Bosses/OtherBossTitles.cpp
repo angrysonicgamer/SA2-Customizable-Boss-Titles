@@ -48,8 +48,8 @@ BossTitleLetterData KBBLettersDC[]
 
 FullBossTitleData KingBoomBooTitle[]
 {
-	{ arrayptrandlengthT(KBBLettersPC, short), 0, 20, KingBoomBoo.Bar, 16, 3, 360, KingBoomBoo.Texlist, 320, 275, 1.75, KBBColor }, //PC style
-	{ arrayptrandlengthT(KBBLettersDC, short), -2, 20, KingBoomBoo.Bar, 16, 3, 360, KingBoomBoo.Texlist, 320, 275, 1.75, KBBColor }, //Dreamcast/Gamecube style
+	{ arrayptrandlengthT(KBBLettersPC, short), 0, 20, KingBoomBoo.Bar, 16, BossTitle_SetDisplayTime | BossTitle_SetScale, 360, KingBoomBoo.Texlist, 320.0f, 275.0f, 1.75f, KBBColor }, //PC style
+	{ arrayptrandlengthT(KBBLettersDC, short), -2, 20, KingBoomBoo.Bar, 16, BossTitle_SetDisplayTime | BossTitle_SetScale, 360, KingBoomBoo.Texlist, 320.0f, 275.0f, 1.75f, KBBColor }, //Dreamcast/Gamecube style
 };
 
 void WriteKingBoomBooTitle()
@@ -118,8 +118,8 @@ BossTitleLetterData BiolizardLettersDC[]
 
 FullBossTitleData BiolizardTitle[]
 {
-	{ arrayptrandlengthT(BiolizardLettersPC, short), 0, 25, Biolizard.Bar, 15, 2, 0, Biolizard.Texlist, 320, 240, 1.5, WhiteColor },
-	{ arrayptrandlengthT(BiolizardLettersDC, short), 0, 25, Biolizard.Bar, 15, 2, 0, Biolizard.Texlist, 320, 240, 1.5, WhiteColor },
+	{ arrayptrandlengthT(BiolizardLettersPC, short), 0, 25, Biolizard.Bar, 15, BossTitle_SetScale, 0, Biolizard.Texlist, 320.0f, 240.0f, 1.5f, WhiteColor },
+	{ arrayptrandlengthT(BiolizardLettersDC, short), 0, 25, Biolizard.Bar, 15, BossTitle_SetScale, 0, Biolizard.Texlist, 320.0f, 240.0f, 1.5f, WhiteColor },
 };
 
 void WriteBiolizardTitle()
@@ -170,8 +170,8 @@ BossTitleLetterData FinalhazardLettersDC[]
 
 FullBossTitleData FinalhazardTitle[]
 {
-	{ arrayptrandlengthT(FinalhazardLettersPC, short), 0, 25, Finalhazard.Bar, 13, 2, 0, Finalhazard.Texlist, 320, 240, 2, WhiteColor },
-	{ arrayptrandlengthT(FinalhazardLettersDC, short), 0, 25, Finalhazard.Bar, 13, 2, 0, Finalhazard.Texlist, 320, 240, 2, WhiteColor },
+	{ arrayptrandlengthT(FinalhazardLettersPC, short), 0, 25, Finalhazard.Bar, 13, BossTitle_SetScale, 0, Finalhazard.Texlist, 320.0f, 240.0f, 2.0f, WhiteColor },
+	{ arrayptrandlengthT(FinalhazardLettersDC, short), 0, 25, Finalhazard.Bar, 13, BossTitle_SetScale, 0, Finalhazard.Texlist, 320.0f, 240.0f, 2.0f, WhiteColor },
 };
 
 void WriteFinalHazardTitle()
