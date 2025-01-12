@@ -62,12 +62,12 @@ void BossTitleStuff::GenerateLetterData()
 }
 
 
-int BossTitleStuff::CalculateSpacing()
+short BossTitleStuff::CalculateSpacing()
 {
-	int maxSpacing = 12; // the game's default value for character boss titles
+	short maxSpacing = 12; // the game's default value for character boss titles
 	float baseWidth = 320 * (3.0f / 4) * (HorizontalResolution / VerticalResolution);
-	int totalWidth = 0;
-	int spacing = maxSpacing;
+	short totalWidth = 0;
+	short spacing = maxSpacing;
 
 	for (auto& letter : LetterData)
 	{
@@ -88,7 +88,7 @@ int BossTitleStuff::CalculateSpacing()
 
 void BossTitleStuff::SetCharacterSpacing()
 {
-	int spacing = CalculateSpacing();
+	short spacing = CalculateSpacing();
 
 	for (int i = 0; i < LetterData.size() - 1; i++) // add spacing to all letters except for the last one, so the title will be properly centered
 	{
@@ -97,11 +97,11 @@ void BossTitleStuff::SetCharacterSpacing()
 }
 
 
-int BossTitleStuff::CalculateDisplayTime()
+short BossTitleStuff::CalculateDisplayTime()
 {
-	int defaultDisplayTime = 360;
-	int delay = 20;
-	int displayTime = 120 + delay * LetterData.size();
+	short defaultDisplayTime = 360;
+	short delay = 20;
+	short displayTime = 120 + delay * LetterData.size();
 
 	return displayTime < defaultDisplayTime ? defaultDisplayTime : displayTime;
 }
@@ -117,5 +117,5 @@ void BossTitleStuff::SetUpBossTitle(NJS_TEXLIST* texlist)
 {
 	GenerateLetterData();
 	SetCharacterSpacing();
-	BossTitleData = { LetterData.data(), (short)LetterData.size(), 0, 20, nullptr, 0, BossTitle_SetDisplayTime | BossTitle_SetScale, CalculateDisplayTime(), texlist, 320.0f, 240.0f, 2.0f, WhiteColor };
+	BossTitleData = { LetterData.data(), (short)LetterData.size(), 0, 20, 0, nullptr, 0, BossTitle_SetDisplayTime | BossTitle_SetScale, CalculateDisplayTime(), 0, texlist, 320.0f, 240.0f, 2.0f, WhiteColor };
 }

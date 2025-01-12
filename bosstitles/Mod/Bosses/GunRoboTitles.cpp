@@ -2,7 +2,7 @@
 #include "BossTitles.h"
 
 
-//Setting up widths for redrawn GUN robo boss title textures
+// Setting up widths for redrawn GUN robo boss title textures
 
 struct GunRoboLetterData
 {

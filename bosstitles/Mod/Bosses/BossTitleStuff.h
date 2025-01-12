@@ -6,9 +6,9 @@ private:
 	static std::map<char, BossTitleLetterData> BossLetters;
 
 	void GenerateLetterData();
-	int CalculateSpacing();
+	short CalculateSpacing();
 	void SetCharacterSpacing();
-	int CalculateDisplayTime();
+	short CalculateDisplayTime();
 
 public:
 	std::string DefaultText;

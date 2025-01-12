@@ -5,11 +5,13 @@ struct FullBossTitleData
 	BossTitleLetterData* Letters;
 	short LetterCount;
 	short Spacing;
-	int Delay;
+	short Delay;
+	short Null1;				// always 0 probably, setting non-zero value doesn't seem to change anything
 	BossTitleLetterData* Bar;
 	short BarFragmentsCount;
-	short DisplayMode; // uses flags
-	int DisplayTime;
+	short DisplayMode;			// uses flags
+	short DisplayTime;
+	short Null2;				// always 0 probably as well
 	NJS_TEXLIST* Texlist;
 	float X;
 	float Y;
@@ -19,16 +21,16 @@ struct FullBossTitleData
 
 enum BossTitleDisplayFlags : short
 {
-	BossTitle_SetDisplayTime = 1, // DisplayTime = 0 if not set (boss title doesn't disappear in this case, unless some other code makes it disappear)
-	BossTitle_SetScale = 2, // Scale = 1.0 if not set
-	BossTitle_IgnoreDelay = 4, // Delay = 0 if set (displays only first letter in this case), use set delay if not set
+	BossTitle_SetDisplayTime = 1,	// DisplayTime = 0 if not set (boss title doesn't disappear in this case, unless some other code makes it disappear)
+	BossTitle_SetScale = 2,			// Scale = 1.0 if not set
+	BossTitle_IgnoreDelay = 4,		// Delay = 0 if set (displays only first letter in this case), use set delay if not set
 };
 
 enum BossTitleLetterIDs
 {
 	space = 0,
 	
-	//vs character
+	// vs character
 	
 	_A = 1000000,
 	_B,
@@ -72,7 +74,7 @@ enum BossTitleLetterIDs
 	exclamation,
 	question,	
 
-	//King Boom Boo
+	// King Boom Boo
 
 	kbb_K = 8795042,
 	kbb_I = 8795041,
@@ -82,7 +84,7 @@ enum BossTitleLetterIDs
 	kbb_O = 8795045,
 	kbb_M = 8795043,
 
-	//Egg Golem
+	// Egg Golem
 
 	glm_G = 7001008,
 	glm_O = 7001011,
@@ -90,7 +92,7 @@ enum BossTitleLetterIDs
 	glm_E = 7001007,
 	glm_M = 7001010,
 
-	//The Biolizard
+	// The Biolizard
 
 	bio_T = 8795069,
 	bio_H = 8795065,
@@ -104,7 +106,7 @@ enum BossTitleLetterIDs
 	bio_R = 8795068,
 	bio_D = 8795063,
 
-	//The Finalhazard
+	// The Finalhazard
 
 	fin_T = 8795093,
 	fin_H = 8795088,
