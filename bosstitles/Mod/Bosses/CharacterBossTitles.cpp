@@ -181,15 +181,15 @@ __declspec(naked) void LoadEggman2BossTitle()
 }
 
 
-void FreeTitleTex(ObjectMaster* obj)
+void FreeTitleTex(task* taskPtr)
 {
 	FreeTexList(&VsCharacterTexlist);
 }
 
-void LoadBossTitleTex(ObjectMaster* obj, char id)
+void LoadBossTitleTex(task* taskPtr, char id)
 {
 	LoadTextureList("titletex_vscharacter", &VsCharacterTexlist);
-	obj->DeleteSub = FreeTitleTex;
+	taskPtr->dest = FreeTitleTex;
 }
 
 
